@@ -52,8 +52,9 @@ async function generateHTMLPostsData() {
     const postData = await fetchMDContent(post.path);
     const content = Buffer.from(postData.content, 'base64').toString();
     const title = content.split('\n')[0].split('# ')[1];
+    const noTitleContent = content.split('\n').slice(1).join('\n');
     const slug = postData.name.split('.')[0];
-    const rawHTML = marked(content);
+    const rawHTML = marked(noTitleContent);
     const cleanHTML = DOMPurify.sanitize(rawHTML);
 
     const htmlData = {
@@ -100,7 +101,8 @@ async function createHTMLFiles() {
   htmlPosts.forEach(postData => {
     const $ = cheerio.load(templateHTML);
     $('title').text(postData.title);
-    $('body').append(postData.html);
+    $('#post-title').text(postData.title);
+    $('#post-container').append(postData.html);
     console.log(`Writing ${postData.slug}.html`);
     fs.writeFileSync(path.join(__dirname, `public/posts/${postData.slug}.html`), $.html());
     mainPage('#posts').append(`<a href="/posts/${postData.slug}.html">${postData.title}</a>`);
