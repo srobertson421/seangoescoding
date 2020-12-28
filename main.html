@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/images/logo-square.png" />
   <title>Sean Goes Coding</title>
   <link rel="stylesheet" href="/styles/mvp.css" />
   <link rel="stylesheet" href="/styles/seangoescoding.css" />
@@ -30,5 +32,19 @@
     </section>
     <section id="posts"></section>
   </main>
+  <script>
+    if (location.hostname !== "localhost" || location.hostname !== "127.0.0.1") {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+        .then((reg) => {
+          // registration worked
+          console.log('Registration succeeded. Scope is ' + reg.scope);
+        }).catch((error) => {
+          // registration failed
+          console.log('Registration failed with ' + error);
+        });
+      }
+    }
+  </script>
 </body>
 </html>
