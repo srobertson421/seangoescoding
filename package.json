@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node build.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/srobertson421/seangoescoding#readme",
   "devDependencies": {
-    "dompurify": "^2.2.6",
+    "cheerio": "^1.0.0-rc.5",
+    "isomorphic-dompurify": "^0.10.0",
     "marked": "^1.2.7",
     "octonode": "^0.10.0"
   }
