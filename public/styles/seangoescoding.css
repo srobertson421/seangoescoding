@@ -1,0 +1,11 @@
+:root {
+  --color-secondary: #33ccad;
+}
+
+#main-nav {
+  margin-bottom: 0;
+}
+
+#main-logo {
+  width: 150px;
+}
