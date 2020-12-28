@@ -5,6 +5,7 @@
     "scope": "/",
     "start_url": "/",
     "app_name": "Sean Goes Coding",
+    "name": "Sean Goes Coding",
     "short_name": "SGC",
     "description": "Sean Goes Coding Personal Blog",
     "icons": [
