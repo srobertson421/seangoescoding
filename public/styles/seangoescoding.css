@@ -9,3 +9,7 @@
 #main-logo {
   width: 150px;
 }
+
+footer, header, main {
+  padding-top: 0;
+}
