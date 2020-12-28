@@ -72,16 +72,20 @@ async function createHTMLFiles() {
   const htmlPosts = await generateHTMLPostsData();
   
   // delete build directory
-  console.log('Removing build folder');
-  fs.rmdirSync(path.join(__dirname, 'build'), { recursive: true });
+  // console.log('Removing build folder');
+  // fs.rmdirSync(path.join(__dirname, 'build'), { recursive: true });
 
-  // create new build directory
-  console.log('Creating new build folder');
-  fs.mkdirSync(path.join(__dirname, 'build'));
+  // // create new build directory
+  // console.log('Creating new build folder');
+  // fs.mkdirSync(path.join(__dirname, 'build'));
+
+  // delete posts directory
+  console.log('Removing posts folder');
+  fs.rmdirSync(path.join(__dirname, 'public/posts'), { recursive: true });
 
   // create new posts directory
-  console.log('Creating build/posts folder');
-  fs.mkdirSync(path.join(__dirname, 'build/posts'));
+  console.log('Creating public/posts folder');
+  fs.mkdirSync(path.join(__dirname, 'public/posts'));
 
   // read post template html
   console.log('Reading template html');
@@ -98,13 +102,13 @@ async function createHTMLFiles() {
     $('title').text(postData.title);
     $('body').append(postData.html);
     console.log(`Writing ${postData.slug}.html`);
-    fs.writeFileSync(path.join(__dirname, `build/posts/${postData.slug}.html`), $.html());
+    fs.writeFileSync(path.join(__dirname, `public/posts/${postData.slug}.html`), $.html());
     mainPage('#posts').append(`<a href="/posts/${postData.slug}.html">${postData.title}</a>`);
   });
   console.log('Finished creating posts');
 
-  console.log('Writing index.html to build folder');
-  fs.writeFileSync(path.join(__dirname, 'build/index.html'), mainPage.html());
+  console.log('Writing index.html to public folder');
+  fs.writeFileSync(path.join(__dirname, 'public/index.html'), mainPage.html());
 }
 
 async function main() {
