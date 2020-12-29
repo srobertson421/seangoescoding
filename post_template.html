@@ -3,27 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#33ccad">
+  <link rel="apple-touch-icon" href="/images/icon-192x192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/images/logo-square.png" />
   <title>Sean Goes Coding</title>
-  <link rel="stylesheet" href="/styles/mvp.css" />
+  <!-- <link rel="stylesheet" href="/styles/mvp.css" /> -->
   <link rel="stylesheet" href="/styles/seangoescoding.css" />
 </head>
 <body>
   <main>
-    <section id="post-container">
+    <section>
       <header>
         <nav id="main-nav">
-          <a href="/">
-            <img id="main-logo" alt="Logo" src="/images/logo.png">
-          </a>
-          <ul>
-            <li>
-              <a href="/about.html">About</a>
-            </li>
-          </ul>
+          <div id="left">
+            <a href="/">
+              <img id="main-logo" alt="Logo" src="/images/logo.png">
+            </a>
+          </div>
+          <div id="right">
+            <ul>
+              <li>
+                <a href="/about.html">About</a>
+              </li>
+            </ul>
+          </div>
         </nav>
         <h1 id="post-title"></h1>
       </header>
     </section>
+    <section class="container" id="post-container"></section>
   </main>
+  <script>
+    if (location.hostname !== "localhost" || location.hostname !== "127.0.0.1") {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+        .then((reg) => {
+          // registration worked
+          console.log('Registration succeeded. Scope is ' + reg.scope);
+        }).catch((error) => {
+          // registration failed
+          console.log('Registration failed with ' + error);
+        });
+      }
+    }
+  </script>
 </body>
 </html>

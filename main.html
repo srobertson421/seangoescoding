@@ -8,31 +8,33 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="icon" href="/images/logo-square.png" />
   <title>Sean Goes Coding</title>
-  <link rel="stylesheet" href="/styles/mvp.css" />
+  <!-- <link rel="stylesheet" href="/styles/mvp.css" /> -->
   <link rel="stylesheet" href="/styles/seangoescoding.css" />
 </head>
 <body>
   <main>
     <header>
       <nav id="main-nav">
-        <a href="/">
-          <img id="main-logo" alt="Logo" src="/images/logo.png">
-        </a>
-        <ul>
-          <li>
-            <a href="/about.html">About</a>
-          </li>
-        </ul>
+        <div id="left">
+          <a href="/">
+            <img id="main-logo" alt="Logo" src="/images/logo.png">
+          </a>
+        </div>
+        <div id="right">
+          <ul>
+            <li>
+              <a href="/about.html">About</a>
+            </li>
+          </ul>
+        </div>
       </nav>
-      <h1>Sean Goes Coding</h1>
-      <p>Adventures in programming</p>
     </header>
-    <section>
+    <section class="container">
       <header>
-        <h1>Posts</h1>
+        <h1 id="post-title">Posts</h1>
       </header>
     </section>
-    <section id="posts"></section>
+    <section class="container flex-center" id="posts"></section>
   </main>
   <script>
     if (location.hostname !== "localhost" || location.hostname !== "127.0.0.1") {
