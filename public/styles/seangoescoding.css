@@ -1,5 +1,6 @@
 :root {
   --color-secondary: #33ccad;
+  --width-content: 960px;
 }
 
 #main-nav {
@@ -8,6 +9,10 @@
 
 #main-logo {
   width: 150px;
+}
+
+section {
+  flex-direction: column;
 }
 
 footer, header, main {
