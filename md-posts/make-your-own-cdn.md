@@ -19,11 +19,40 @@ So without further ado, lets jump to the code!
 - Github account
 
 ### Step 1 - Setup Github repo and clone it
-First thing we need to do is create our Github repo that will eventually connect to Netlify.
+
+First thing we need to do is create our Github repo that will eventually connect to Netlify. I typically create one without .gitignore or a README.
 
 ![Create Github Repo](/public/images/blog-images/github_create_repo.jpg)
 
-### Step 2 - Add code to our repo
+Next we'll clone our repo down:
+
+```bash
+git clone git@github.com:<username>/<repo-name>.git
+cd repo-name
+```
+
+### Step 2 - Add code modules to our repo
+
+When adding code to the repo that will become our CDN, it's good to think about how it will be consumed via your import statements. NPM already handles this quite well with semantic versioning so we'll try to emulate that with our own folder structure. Something like this:
+
+```bash
+mkdir -p js/myModule/@0.0.1 && touch js/myModule/@0.0.1/myModule.js
+```
+
+This will allow us to use the following import url when it is fully deployed:
+
+```javascript
+import myModule from 'https://my-cdn.netlify.app/js/myModule/@0.0.1/myModule.js';
+```
+Then down the road we can create new versions of our module without disturbing the old one, just in case a project is using the old code and the new code has breaking changes.
+
+Next open the `myModule.js` file in your favorite code editor and we'll just toss this basic function in there. Notice the `export default` keywords. These allow this file to be consumed by ES module loaders, even directly in the browser!
+
+```javascript
+export default function myModule() {
+  alert('This is my module!!');
+}
+```
 
 ### Step 3 - Add netlify.toml file to control CORS
 
