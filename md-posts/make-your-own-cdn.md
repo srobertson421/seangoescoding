@@ -21,7 +21,7 @@ So without further ado, lets jump to the code!
 ### Step 1 - Setup Github repo and clone it
 First thing we need to do is create our Github repo that will eventually connect to Netlify.
 
-[Todo: image here]
+![Create Github Repo](/public/images/blog-images/github_create_repo.jpg)
 
 ### Step 2 - Add code to our repo
 
