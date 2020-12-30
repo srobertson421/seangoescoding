@@ -56,4 +56,54 @@ export default function myModule() {
 
 ### Step 3 - Add netlify.toml file to control CORS
 
+The last thing we need in our repo is a `netlify.toml` file which will allow us to configure our deployment on Netlify.
+
+```bash
+touch netlify.toml
+```
+
+inside our `netlify.toml` file we'll add the `headers` section to allow for Cross-Origin requests. If we didn't include this our other apps wouldn't be able to request the code files from the cdn due to origin security present in most browsers.
+
+```toml
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"%
+```
+
+That header configuration allows for CORS request from any route in our cdn. If you'd like to be more specific about what routes are allowed you can add as many routes as you need to the toml file.
+
+Now that we have all that, we'll go ahead and save our files and get ready to deploy it all!
+
 ### Step 4 - Deploy and Profit!
+
+Next we need to push our changes up to github:
+
+```bash
+git add -A
+git commit -a -m "my commit message"
+git push origin master
+```
+
+With our changes up in github, we need to connect our repo to Netlify and deploy it to their cdn. Go ahead and:
+
+- Click the **New Site From Git** button
+- Select **Github** and authenticate Netlify to access your Github account
+- You should see a list of your Github repos, go ahead and select the cdn repo
+- We won't fill in anything for the `Build command` or `Publish directory` as we aren't building any files yet and the publish directory will be our root repo directory.
+- Click **Deploy site**
+
+![Netlify Deploy](/public/images/netlify-deploy.jpg)
+
+Now all that's left is to wait for the files to deploy! While you wait though, you can change your sitename so that's something easier to understand rather than the randomized name that Netlify gives you.
+
+- Click **Site Settings** from your site overview page
+- In the **Site Details** section, you will find the **Change site name** button
+- I named mine `sean-cdn`
+
+### Conclusion
+
+If you see a successful deploy message in your site overview, congrats!!! You now have a personal CDN setup ready for you to add more code as you build things. As you come up with additions, just add the files (preferrably in a versioned folder) and push to Github again from your local repo. Your code will auto-deploy to Netlify!
+
+In another post, we'll go through adding a build step for Netlify to run that will minify our JS code. Stay tuned and thanks so much for reading!!
