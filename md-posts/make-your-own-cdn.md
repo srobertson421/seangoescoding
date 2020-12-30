@@ -94,7 +94,7 @@ With our changes up in github, we need to connect our repo to Netlify and deploy
 - We won't fill in anything for the `Build command` or `Publish directory` as we aren't building any files yet and the publish directory will be our root repo directory.
 - Click **Deploy site**
 
-![Netlify Deploy](/public/images/netlify-deploy.jpg)
+![Netlify Deploy](/public/images/blog-images/netlify-deploy.jpg)
 
 Now all that's left is to wait for the files to deploy! While you wait though, you can change your sitename so that's something easier to understand rather than the randomized name that Netlify gives you.
 
