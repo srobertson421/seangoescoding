@@ -52,7 +52,7 @@ async function generateHTMLPostsData() {
     const postData = await fetchMDContent(post.path);
     const content = Buffer.from(postData.content, 'base64').toString();
     const title = content.split('\n')[0].split('# ')[1];
-    const noTitleContent = content.split('\n').slice(1).join('\n').replace('/public/images', '/images');
+    const noTitleContent = content.split('\n').slice(1).join('\n').replaceAll('/public/images', '/images');
     const slug = postData.name.split('.')[0];
     const rawHTML = marked(noTitleContent);
     const cleanHTML = DOMPurify.sanitize(rawHTML);
