@@ -47,6 +47,14 @@ pre {
 #main-nav #right ul {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#main-nav #right ul li {
+  margin-left: .7rem;
 }
 
 #main-logo {
